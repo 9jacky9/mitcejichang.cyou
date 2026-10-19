@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>云海随笔 - Mitce机场视听生活与全球数码札记</title>
+  <meta name="description" content="Mitce机场官方云海随笔专栏。汇聚全球流媒体解锁秘籍、生成式AI创作避坑心得、多端科学分流指南及跨海数字生活札记。">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cloud-rice: #FAF8F5;
+      --cloud-surface: #FFFFFF;
+      --cloud-ink: #1C1917;
+      --cloud-ink-light: #44403C;
+      --cloud-muted: #78716C;
+      --cloud-vermilion: #C2410C;
+      --cloud-vermilion-hover: #9A3412;
+      --cloud-cinnabar: #DC2626;
+      --cloud-gold: #D97706;
+      --cloud-gold-soft: #FEF3C7;
+      --cloud-border: #E7E5E4;
+      --cloud-radius: 18px;
+      --cloud-font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, sans-serif;
+    }
+    body { font-family: var(--cloud-font); background: var(--cloud-rice); color: var(--cloud-ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+    /* Prominent Consistent Hyperlinks: No blue/purple, keeps cinnabar before and after visited */
+    a, a:visited { color: var(--cloud-vermilion); text-decoration: none; transition: color 0.15s ease; }
+    a:hover { color: var(--cloud-vermilion-hover); text-decoration: underline; }
+
+    .cloud-wrapper { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .cloud-header-banner { background: rgba(250, 248, 245, 0.95); border-bottom: 1px solid var(--cloud-border); position: sticky; top: 0; z-index: 99; backdrop-filter: blur(8px); }
+    .cloud-header-flex { display: flex; justify-content: space-between; align-items: center; height: 76px; }
+    .cloud-nav-menu { display: flex; gap: 32px; font-size: 15px; font-weight: 600; }
+    .cloud-nav-menu a, .cloud-nav-menu a:visited { color: var(--cloud-ink-light); }
+    .cloud-nav-menu a:hover { color: var(--cloud-vermilion); text-decoration: none; }
+
+    .cloud-hero-block { text-align: center; padding: 60px 0 45px; background: linear-gradient(180deg, #FFFFFF 0%, #FAF8F5 100%); border-bottom: 1px solid var(--cloud-border); margin-bottom: 45px; position: relative; overflow: hidden; }
+    .cloud-banner-bg-anim { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .cloud-banner-mist { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.4; animation: cloudDriftSlow 12s ease-in-out infinite alternate; }
+    @keyframes cloudDriftSlow { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(25px, 12px) scale(1.08); } 100% { transform: translate(-20px, -10px) scale(0.95); } }
+    .tag-badge { display: inline-block; background: #FFFBEB; border: 1px solid #FDE68A; color: var(--cloud-vermilion); padding: 5px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
+    h1 { font-size: 36px; font-weight: 800; color: var(--cloud-ink); margin-bottom: 14px; }
+    .subtitle { font-size: 17px; color: var(--cloud-muted); max-width: 680px; margin: 0 auto; }
+
+    .articles-deck { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 60px; }
+    .article-card { background: var(--cloud-surface); border: 1px solid var(--cloud-border); border-radius: var(--cloud-radius); padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s ease; box-shadow: 0 4px 16px rgba(0,0,0,0.02); }
+    .article-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(217,119,6,0.1); border-color: var(--cloud-gold); }
+    .card-seal-tag { font-size: 12px; font-weight: 800; color: var(--cloud-gold); text-transform: uppercase; margin-bottom: 12px; display: block; }
+    .card-title { font-size: 18px; font-weight: 800; line-height: 1.45; margin-bottom: 14px; }
+    .card-title a, .card-title a:visited { color: var(--cloud-ink); text-decoration: none; }
+    .card-title a:hover { color: var(--cloud-vermilion); }
+    .card-desc { font-size: 14px; color: var(--cloud-muted); line-height: 1.7; margin-bottom: 22px; }
+    .card-foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--cloud-border); padding-top: 14px; font-size: 13px; }
+    .read-link { font-weight: 800; font-size: 14px; }
+
+    .cloud-pill-btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; border-radius: 50px; font-weight: 700; font-size: 14px; background: linear-gradient(135deg, var(--cloud-vermilion), #EA580C); color: #FFFFFF !important; text-decoration: none !important; }
+
+    .scroll-cloud-footer { background: #292524; color: #FAFAF9; padding: 56px 0 38px; margin-top: 70px; text-align: center; border-top: 3px solid var(--cloud-gold); }
+    .cloud-footer-links { display: flex; justify-content: center; gap: 44px; margin-bottom: 24px; flex-wrap: wrap; }
+    .cloud-footer-links a, .cloud-footer-links a:visited { font-size: 15px; font-weight: 700; color: #D6D3D1; text-decoration: none; }
+    .cloud-footer-links a:hover { color: #FBBF24; }
+    .cloud-footer-note { font-size: 13px; color: #A8A29E; }
+
+    .cloud-nav-checkbox { display: none; }
+    .cloud-menu-trigger { display: none; cursor: pointer; }
+    .cloud-icon-close { display: none; }
+    .cloud-action-group { display: flex; align-items: center; gap: 10px; }
+
+    @media (max-width: 992px) { .articles-deck { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) {
+      .cloud-wrapper { padding: 0 16px; }
+      .cloud-header-flex { position: relative; }
+      .cloud-header-flex a svg { max-width: 140px; height: auto; }
+      .cloud-menu-trigger {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        background: #FFFFFF;
+        border: 1px solid var(--cloud-border);
+        border-radius: 50%;
+        color: var(--cloud-ink);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      }
+      .cloud-nav-checkbox:checked ~ .cloud-action-group .cloud-menu-trigger .cloud-icon-burger { display: none; }
+      .cloud-nav-checkbox:checked ~ .cloud-action-group .cloud-menu-trigger .cloud-icon-close { display: block; }
+      .cloud-nav-menu {
+        display: none !important;
+        position: absolute;
+        top: 100%;
+        left: -16px;
+        right: -16px;
+        background: #FFFFFF;
+        border-top: 2px solid var(--cloud-gold);
+        border-bottom: 1px solid var(--cloud-border);
+        flex-direction: column;
+        padding: 14px 20px;
+        gap: 8px;
+        box-shadow: 0 16px 32px rgba(68, 64, 60, 0.12);
+        z-index: 999;
+      }
+      .cloud-nav-checkbox:checked ~ .cloud-nav-menu { display: flex !important; }
+      .cloud-nav-menu a {
+        padding: 12px 18px;
+        border-radius: 30px;
+        font-size: 15px;
+        font-weight: 700;
+        background: var(--cloud-rice);
+        border: 1px solid var(--cloud-border);
+        color: var(--cloud-ink) !important;
+        text-align: center;
+      }
+      .cloud-action-group .cloud-pill-btn { padding: 9px 15px; font-size: 13px; }
+    }
+    @media (max-width: 640px) { .articles-deck { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="cloud-header-banner">
+    <div class="cloud-wrapper">
+      <div class="cloud-header-flex">
+        <a href="index.html" title="Mitce机场">
+          <svg width="200" height="40" viewBox="0 0 220 44" fill="none">
+            <path d="M12 28C8.5 28 6 25.5 6 22C6 19 8.2 16.5 11.2 16.1C12.3 12.5 15.6 10 19.5 10C24.2 10 28 13.8 28 18.5C28 19 27.9 19.5 27.8 20C29.6 20.3 31 22 31 24C31 26.2 29.2 28 27 28H12Z" stroke="#D97706" stroke-width="2" fill="#FEF3C7"/>
+            <path d="M22 28C28 32 38 34 50 26C56 22 62 25 70 24" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round"/>
+            <text x="56" y="29" font-family="'PingFang SC', sans-serif" font-size="20" font-weight="900" fill="#1C1917">MITCE</text>
+            <text x="134" y="29" font-family="'PingFang SC', sans-serif" font-size="18" font-weight="800" fill="#C2410C">机场</text>
+          </svg>
+        </a>
+        <input type="checkbox" id="cloud-chron-toggle" class="cloud-nav-checkbox" aria-label="切换导航菜单">
+        <nav class="cloud-nav-menu">
+          <a href="index.html#features">畅行无阻</a>
+          <a href="index.html#streaming">影音灵犀</a>
+          <a href="index.html#pricing">订购锦囊</a>
+          <a href="index.html#faq">解惑释疑</a>
+          <a href="chronicles.html">云海随笔</a>
+        </nav>
+        <div class="cloud-action-group">
+          <a href="https://ww012.twilightaff.com/#/?code=A56DH1Af" class="cloud-pill-btn" rel="nofollow" target="_blank">
+            进入官网
+          </a>
+          <label for="cloud-chron-toggle" class="cloud-menu-trigger" aria-label="切换导航菜单">
+            <svg class="cloud-icon-burger" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg class="cloud-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="cloud-hero-block">
+    <div class="cloud-banner-bg-anim" aria-hidden="true">
+      <div class="cloud-banner-mist" style="width: 380px; height: 180px; background: radial-gradient(circle, #FEF3C7 0%, rgba(254, 243, 199, 0) 70%); top: -20px; left: -40px;"></div>
+      <div class="cloud-banner-mist" style="width: 420px; height: 200px; background: radial-gradient(circle, #FDE68A 0%, rgba(253, 230, 138, 0) 70%); bottom: -30px; right: -40px; animation-delay: -5s;"></div>
+    </div>
+    <div class="cloud-wrapper" style="position: relative; z-index: 1;">
+      <span class="tag-badge">✦ CHRONICLES & ESSAYS</span>
+      <h1>云海随笔 · 全球视听与数码漫步札记</h1>
+      <p class="subtitle">记录异国影音品鉴之道、AI 灵感创作技巧、多端分流实战心得以及如丝般顺滑的跨国漫游指南。</p>
+    </div>
+  </div>
+
+  <div class="cloud-wrapper">
+    <div class="articles-deck">
+      <!-- Article 1 (Product Focus) -->
+      <article class="article-card">
+        <div>
+          <span class="card-seal-tag">官方札记 · 平台实录</span>
+          <h2 class="card-title">
+            <a href="mitce-seamless-entertainment-chronicle.html">行云流水般的跨海漫游：Mitce机场全能视听与日常加速使用札记</a>
+          </h2>
+          <p class="card-desc">以日常观影发烧友与高频创作者视角，细致体悟Mitce机场在真4K无卡顿播放、原生流媒体解锁及无痕隐私保护上的非凡表现。</p>
+        </div>
+        <div class="card-foot">
+          <span style="color: var(--cloud-muted);">2026-10-18</span>
+          <a href="mitce-seamless-entertainment-chronicle.html" class="read-link">品读全文 &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="article-card">
+        <div>
+          <span class="card-seal-tag">视听盛宴 · 奈飞指南</span>
+          <h2 class="card-title">
+            <a href="netflix-global-content-unlock-secrets.html">奈飞跨区看剧完全指引：如何规避代理风控并点亮杜比视界</a>
+          </h2>
+          <p class="card-desc">深度解析Netflix平台对数据中心机房IP的屏蔽逻辑，手把手教您如何利用纯净家宽住宅节点顺利解锁全区非自制剧集与杜比全景声。</p>
+        </div>
+        <div class="card-foot">
+          <span style="color: var(--cloud-muted);">2026-10-17</span>
+          <a href="netflix-global-content-unlock-secrets.html" class="read-link">品读全文 &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="article-card">
+        <div>
+          <span class="card-seal-tag">灵犀智能 · 避坑常识</span>
+          <h2 class="card-title">
+            <a href="chatgpt-claude-region-access-tips.html">ChatGPT与Claude使用避坑常识：如何挑选纯净原生IP防止被封号</a>
+          </h2>
+          <p class="card-desc">OpenAI与Anthropic对连入环境的风险控制愈发严密。本文详解为什么共享节点容易触发封号，以及如何科学维护高纯度访问环境。</p>
+        </div>
+        <div class="card-foot">
+          <span style="color: var(--cloud-muted);">2026-10-16</span>
+          <a href="chatgpt-claude-region-access-tips.html" class="read-link">品读全文 &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article class="article-card">
+        <div>
+          <span class="card-seal-tag">游艺竞技 · 延迟调优</span>
+          <h2 class="card-title">
+            <a href="overseas-gaming-packet-jitter-fix.html">跨服联机为什么总被踢？游戏回包丢帧与节点抖动的底层成因</a>
+          </h2>
+          <p class="card-desc">Steam、PlayStation跨国联机总遭遇红字丢包警告？全面拆解国际网络NAT类型、回包路由绕道与物理专线低抖动调谐之道。</p>
+        </div>
+        <div class="card-foot">
+          <span style="color: var(--cloud-muted);">2026-10-15</span>
+          <a href="overseas-gaming-packet-jitter-fix.html" class="read-link">品读全文 &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Article 5 -->
+      <article class="article-card">
+        <div>
+          <span class="card-seal-tag">社媒运营 · 环境隔离</span>
+          <h2 class="card-title">
+            <a href="cross-border-social-media-growth-guide.html">海外社媒内容创作者的基建清单：多地区网络环境切换与合规防封</a>
+          </h2>
+          <p class="card-desc">TikTok与Instagram创作者如何在多账号运营中保持原生网络伪装度？全面排查DNS泄漏、时区伪装与纯净IP分流要诀。</p>
+        </div>
+        <div class="card-foot">
+          <span style="color: var(--cloud-muted);">2026-10-14</span>
+          <a href="cross-border-social-media-growth-guide.html" class="read-link">品读全文 &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Article 6 -->
+      <article class="article-card">
+        <div>
+          <span class="card-seal-tag">新手锦囊 · 规则分流</span>
+          <h2 class="card-title">
+            <a href="shadowrocket-rule-filter-configs.html">小火箭Shadowrocket分流规则详解：实现国内国外流量自动分流不耗费配额</a>
+          </h2>
+          <p class="card-desc">iOS生态最便捷工具Shadowrocket的高阶使用图解：从场景配置、Direct直连白名单到针对性规则集自动化维护，省心省流。</p>
+        </div>
+        <div class="card-foot">
+          <span style="color: var(--cloud-muted);">2026-10-13</span>
+          <a href="shadowrocket-rule-filter-configs.html" class="read-link">品读全文 &rarr;</a>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <footer class="scroll-cloud-footer">
+    <div class="cloud-wrapper">
+      <nav class="cloud-footer-links">
+        <a href="sitemap.html">网站地图</a>
+        <a href="about.html">关于我们</a>
+        <a href="terms.html">服务条款</a>
+        <a href="privacy.html">隐私政策</a>
+      </nav>
+      <div class="cloud-footer-note">
+        &copy; 2026 Mitce机场 版权所有. 行云流水，万境皆通.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
